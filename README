@@ -2,3 +2,45 @@
 
 ## docs
 http://devcenter.heroku.com/articles/rack
+
+    vi hello.rb
+
+require 'sinatra'
+
+get '/' do
+  "Hello World!"
+end
+
+    vi config.ru
+
+require './hello'
+run Sinatra::Application
+
+    vi Gemfile
+
+source 'http://rubygems.org'
+gem 'sinatra'
+
+
+    git init
+    git add .
+    git commit -m 'first commit'
+    # push to your new git repo you created on github
+    git remote add origin {YOUR GITHUB URI}
+    # push to github
+    $ git push -u origin master 
+
+Now the repo is in github, time to push to heroku
+
+(if you don't have your key set up on heroku (heroku keys:add)
+
+    $ heroku create
+    Creating furious-dawn-6326.... done, stack is bamboo-mri-1.9.2
+    http://furious-dawn-6326.heroku.com/ | git@heroku.com:furious-dawn-6326.git
+    Git remote heroku added
+
+Now push to Heroku
+
+    $ git push heroku master
+
+    $ heroku open http://{YOUR APP SUBDOMAIN}.heroku.com
